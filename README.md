@@ -1,3 +1,23 @@
+# INSTALAÇÃO SIMPLES — WINDOWS
+
+**Passo 1:** instale o Maestri oficial: https://www.themaestri.app/pt-br/windows e abra o aplicativo com sua própria conta de IA.
+
+**Passo 2:** abra o **PowerShell** do Windows (não o chat do Maestri). Copie e cole este comando:
+
+```powershell
+& ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/Gmdrones/instagram-social-agent-starter/main/bootstrap.ps1')))
+```
+
+O comando baixa os arquivos públicos do repositório, instala o agente local e prepara `MAESTRI-PROMPT.md`. **Revise o script antes de executá-lo**, pois comandos remotos podem ser alterados no repositório. Alternativa mais segura: baixe o ZIP do GitHub e rode `bootstrap.ps1` localmente.
+
+**Passo 3:** dentro do Maestri, abra um terminal **Maestro** e copie/cole o conteúdo de [MAESTRI-PROMPT.md](./MAESTRI-PROMPT.md). Esse prompt orienta o Maestro a criar os três terminais e o navegador usando os recursos nativos da versão instalada. O usuário faz login no Instagram no próprio navegador. A criação dos terminais **depende de sessão Maestro e de presets disponíveis** e deve ser verificada com `maestri list`; não acontece apenas por executar PowerShell.
+
+**Passo 4:** configure sua empresa, nicho, região e textos com o agente. A Meta API só é necessária para funcionalidades que utilizam a API oficial de mensagens; a descoberta por busca pública usa uma chave de pesquisa própria, opcional. O projeto **não envia Directs frios nem segue perfis automaticamente**.
+
+Os bancos locais são gerados no computador do usuário; não há importação de dados, sessões ou contas do desenvolvedor.
+
+---
+
 # Instagram Social Agent
 
 Open-source local business assistant for Instagram professional accounts, compatible with **Maestri**, **Codex**, **Claude Code** and **Antigravity**.
