@@ -1,3 +1,50 @@
+<div align="center">
+
+# 🚀 Instagram Social Agent
+
+### Transforme pesquisa de perfis em um fluxo organizado de prospecção.
+
+**Escolha seu nicho · Pesquise perfis públicos · Organize no CRM · Prepare abordagens · Acompanhe resultados**
+
+![Platform](https://img.shields.io/badge/Windows-PowerShell-3776AB?style=for-the-badge)
+![Linux](https://img.shields.io/badge/Linux-Python-FCC624?style=for-the-badge)
+![Maestri](https://img.shields.io/badge/Maestri-Multi--terminal-7C3AED?style=for-the-badge)
+![Privacy](https://img.shields.io/badge/Data-Local%20Only-059669?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-64748B?style=for-the-badge)
+
+**[📦 Instalação](#instalação-em-3-passos--não-precisa-programar) · [🖥️ Prints reais](#-print-real-do-ambiente-de-testes) · [🧭 Como funciona](#-como-o-agente-funciona) · [⚙️ Configuração Maestro](MAESTRI-PROMPT.md)**
+
+</div>
+
+![Visão geral do fluxo do Instagram Social Agent](assets/workflow-overview.svg)
+
+## 📸 Print real do ambiente de testes
+
+A imagem abaixo foi capturada durante a validação em uma **máquina Linux isolada no Google Cloud**. Ela mostra o workspace do Maestri, o terminal supervisor, os terminais **SocialResearch** e **SocialCRM**, e o portal do Instagram. A saída dos terminais foi ocultada por privacidade.
+
+![Print real do Maestri com supervisor, pesquisa, CRM e portal Instagram; saídas de terminal ocultadas](assets/maestri-workspace-real-redacted.png)
+
+> **Registro de teste:** a criação dos terminais por `maestri recruit`, o portal `maestri portal create`, a instalação Linux e quatro testes unitários foram confirmados. Os terminais do teste usaram o preset **Shell**, não agentes de IA autenticados. O print **não é demonstração de follows ou Directs enviados**.
+
+## 🧭 Como o agente funciona
+
+| Etapa | O que acontece | Estado |
+|:--|:--|:--|
+| 🎯 Público-alvo | Defina setor, nicho e região | Configurável |
+| 🔎 Descoberta | Pesquisa links públicos com a chave de busca **do usuário** | Implementado; requer configuração |
+| 🗂️ CRM local | Persiste candidatos, evita duplicações e organiza revisão | Implementado |
+| ✉️ Mensagens | Gera textos para revisão, sem disparar contatos frios automaticamente | Implementado |
+| 📊 Relatórios | Acompanha contatos e fila local | Implementado |
+| 🧩 Maestri | Terminais e navegador em workspace independente | Provisionamento testado; requer sessão Maestro |
+| 🔑 Instagram | Login na **própria conta** pelo portal | Tela de login testada; autenticação individual |
+| 🤖 IA autônoma | Execução por Codex, Claude Code ou Antigravity | Depende de agente autenticado; ponta a ponta não validado |
+
+**Privacidade:** não contém bases de contatos, cookies, sessões, credenciais ou caminhos de trabalho do desenvolvedor. Cada instalação cria seu próprio ambiente.
+
+**Importante:** esta versão não implementa follow automático em escala nem Directs promocionais não solicitados; não há promessa de evitar bloqueios do Instagram. O atendimento pela API oficial depende de permissões e de conversas elegíveis.
+
+---
+
 # INSTALAÇÃO EM 3 PASSOS — NÃO PRECISA PROGRAMAR
 
 > **Para Windows.** Cada pessoa cria seu próprio ambiente: não usamos os bancos, as contas ou as ferramentas particulares do desenvolvedor.
