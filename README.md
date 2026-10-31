@@ -5,7 +5,8 @@ Open-source local business assistant for Instagram professional accounts, compat
 ## Current implementation
 
 - PowerShell installers for the local assistant; separate official Maestri installer link
-- Local SQLite CRM for contacts and lead records (no customer database uploaded to GitHub)
+- Local SQLite CRM for contacts and lead records, generated on each user's own computer (no publisher database uploaded or connected)
+- Configurable niche/region discovery through the user's own public-search API key, with local candidate review and message drafting
 - Customizable business, audience, location and message templates
 - Official Meta Instagram API identity connectivity check
 - **Webhook server with signed event verification**, duplicate event protection and inbound contact history
@@ -60,6 +61,19 @@ Review and send an eligible reply:
 & "$HOME\InstagramSocialAgent\service.cmd" report
 ```
 Dispatch only succeeds if Meta accepts the request and returns a message ID. The recipient must meet platform messaging requirements and consent rules. Receiving an event does not by itself guarantee ongoing messaging eligibility.
+
+## Discover prospects in your chosen niche (independent installation)
+
+The user chooses an audience and location, such as drone pilots in Brazil, shops in Lisbon, or dentists in São Paulo. Configure a **personal Brave Search API key** (Brave Search may have usage charges/limits). Discovery uses indexed public web results and collects Instagram profile links for review. All results are stored exclusively in the user’s local `InstagramSocialAgent/data/` folder. No publisher database, API account, Maestri workspace or Instagram profile is accessed.
+
+```powershell
+$env:BRAVE_SEARCH_API_KEY = 'YOUR_OWN_SEARCH_API_KEY'
+& "$HOME\InstagramSocialAgent\discover.cmd" discover --niche "pilotos de drone" --region "Brasil"
+& "$HOME\InstagramSocialAgent\discover.cmd" list
+& "$HOME\InstagramSocialAgent\discover.cmd" plan
+```
+
+Candidates may be inaccurate and must be reviewed. `plan` prepares a message for each profile but **does not follow accounts or send unsolicited Directs**. Instagram’s official business messaging API requires eligible user-initiated conversations for replies. There is no general official API endpoint for following arbitrary profiles. See [Meta Instagram API docs](https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api).
 
 ## Lead workflow
 
