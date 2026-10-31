@@ -8,12 +8,19 @@ $DataDir=Join-Path $InstallDir 'data'
 New-Item -ItemType Directory -Force -Path $InstallDir,$DataDir|Out-Null
 Copy-Item -LiteralPath (Join-Path $root 'src\social_agent\core.py') -Destination (Join-Path $InstallDir 'social_agent.py') -Force
 Copy-Item -LiteralPath (Join-Path $root 'src\social_agent\service.py') -Destination (Join-Path $InstallDir 'social_service.py') -Force
+Copy-Item -LiteralPath (Join-Path $root 'src\social_agent\discovery.py') -Destination (Join-Path $InstallDir 'social_discovery.py') -Force
 $launcher=Join-Path $InstallDir 'social.cmd'
 @"
 @echo off
 set "SOCIAL_AGENT_HOME=$DataDir"
 $p $($argsPy -join ' ') "$InstallDir\social_agent.py" %*
 "@|Set-Content -Path $launcher -Encoding ASCII
+$discoveryLauncher=Join-Path $InstallDir 'discover.cmd'
+@"
+@echo off
+set "SOCIAL_AGENT_HOME=$DataDir"
+$p $($argsPy -join ' ') "$InstallDir\social_discovery.py" %*
+"@|Set-Content -Path $discoveryLauncher -Encoding ASCII
 $serviceLauncher=Join-Path $InstallDir 'service.cmd'
 @"
 @echo off
@@ -33,3 +40,5 @@ Write-Host "Installed: $InstallDir" -ForegroundColor Green
 Write-Host "Private local data (created for this installation only): $DataDir"
 Write-Host "No existing CRM, Maestri workspace, database or credentials were imported."
 Write-Host "Use: & '$launcher' draft; & '$serviceLauncher' status"
+
+Write-Host "Prospecting: & '$discoveryLauncher' discover --niche 'drone pilots' --region 'Brazil'"
