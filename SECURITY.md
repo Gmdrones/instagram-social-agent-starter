@@ -1,0 +1,2 @@
+# Security policy
+Never publish tokens, passwords, private chats, customer data, browser profiles, session files, or private CRM databases. Report security issues privately to the repository owner, not in public issues. This community starter performs local-only lead collection, drafting and an authorized Meta API connectivity test. Live messaging requires separate verification and security review. No mass outreach, stealth automation or anti-abuse evasion is supported.
