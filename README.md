@@ -1,20 +1,42 @@
-# INSTALAÇÃO SIMPLES — WINDOWS
+# INSTALAÇÃO EM 3 PASSOS — NÃO PRECISA PROGRAMAR
 
-**Passo 1:** instale o Maestri oficial: https://www.themaestri.app/pt-br/windows e abra o aplicativo com sua própria conta de IA.
+> **Para Windows.** Cada pessoa cria seu próprio ambiente: não usamos os bancos, as contas ou as ferramentas particulares do desenvolvedor.
 
-**Passo 2:** abra o **PowerShell** do Windows (não o chat do Maestri). Copie e cole este comando:
+## PASSO 1 — Instalar e abrir o Maestri
+1. Acesse **https://www.themaestri.app/pt-br/windows**.
+2. Instale, abra o aplicativo e conecte **sua conta** de agente de IA (Codex, Claude Code ou Antigravity).
+3. No Maestri, abra um terminal com papel **Maestro**. Você usará esse terminal no Passo 3.
+
+## PASSO 2 — Instalar o Instagram Social Agent pelo PowerShell
+1. No Windows, clique em **Iniciar** e procure **PowerShell**.
+2. Abra o PowerShell normal (não precisa executar como administrador).
+3. Copie e cole o comando abaixo e pressione **Enter**:
 
 ```powershell
 & ([scriptblock]::Create((Invoke-RestMethod 'https://raw.githubusercontent.com/Gmdrones/instagram-social-agent-starter/main/bootstrap.ps1')))
 ```
 
-O comando baixa os arquivos públicos do repositório, instala o agente local e prepara `MAESTRI-PROMPT.md`. **Revise o script antes de executá-lo**, pois comandos remotos podem ser alterados no repositório. Alternativa mais segura: baixe o ZIP do GitHub e rode `bootstrap.ps1` localmente.
+Esse comando baixa os arquivos públicos do repositório e executa o instalador local. **Confira o código antes de executar**, pois o comando obtém um script remoto. Para revisar ou instalar sem executá-lo diretamente, abra [bootstrap.ps1](./bootstrap.ps1), baixe o repositório como ZIP e execute o arquivo localmente.
 
-**Passo 3:** dentro do Maestri, abra um terminal **Maestro** e copie/cole o conteúdo de [MAESTRI-PROMPT.md](./MAESTRI-PROMPT.md). Esse prompt orienta o Maestro a criar os três terminais e o navegador usando os recursos nativos da versão instalada. O usuário faz login no Instagram no próprio navegador. A criação dos terminais **depende de sessão Maestro e de presets disponíveis** e deve ser verificada com `maestri list`; não acontece apenas por executar PowerShell.
+**O que acontece:** o instalador cria a pasta `%USERPROFILE%\InstagramSocialAgent`, os programas locais e o banco SQLite **novo** dentro de `data`. Ele não importa contatos, cookies, senhas ou bases de terceiros.
 
-**Passo 4:** configure sua empresa, nicho, região e textos com o agente. A Meta API só é necessária para funcionalidades que utilizam a API oficial de mensagens; a descoberta por busca pública usa uma chave de pesquisa própria, opcional. O projeto **não envia Directs frios nem segue perfis automaticamente**.
+## PASSO 3 — Deixar o Maestro preparar os agentes
+1. Abra [**MAESTRI-PROMPT.md**](./MAESTRI-PROMPT.md).
+2. Clique em **Copy raw file** (ou selecione e copie todo o texto).
+3. Volte ao Maestri e **cole o texto dentro do terminal Maestro**, não no PowerShell. Pressione **Enter**.
+4. O Maestro tentará criar os terminais **Social Pesquisa**, **Social CRM** e **Social Navegador**, usando a sua conta de IA e o diretório instalado. Você não precisa digitar individualmente os comandos de cada terminal.
+5. Quando o portal do Instagram abrir, **faça login você mesmo**, na sua própria conta. Não forneça senha nem código 2FA ao agente.
+6. Responda apenas as perguntas sobre **empresa, público, região, mensagem e horários**. Para pesquisas automatizadas de sites públicos será necessária uma chave de pesquisa própria (veja mais abaixo).
 
-Os bancos locais são gerados no computador do usuário; não há importação de dados, sessões ou contas do desenvolvedor.
+**O que é automático e o que ainda não é?** O PowerShell instala a aplicação e prepara o prompt. A criação real dos agentes depende do Maestro e dos presets disponíveis; o prompt instrui a verificar o resultado. Login, permissões Meta e escolha do público exigem participação do usuário. O navegador não torna o envio de Directs automaticamente autorizado.
+
+## Precisa configurar a API da Meta?
+**Só para o atendimento via API oficial.** A pesquisa por páginas públicas e a preparação de abordagens são independentes da Meta, mas exigem fonte de pesquisa permitida. Para receber eventos e responder pelo Instagram Messaging API é necessário uma conta profissional elegível, app Meta com permissões apropriadas, token e webhook HTTPS configurado pelo próprio usuário.
+
+## Como saber se funcionou?
+No terminal Maestro, peça **“Verifique os terminais e execute o teste de instalação do Social Agent. Mostre o resultado real de maestri list, service.cmd status e social.cmd draft.”** O agente deve identificar qualquer etapa faltante; não deve dizer que o envio de mensagens ou a prospecção estão ativos sem teste comprovado.
+
+**Limite importante:** a versão pública ainda não automatiza follows de perfis arbitrários nem envia Directs promocionais não solicitados. Não há garantia contra restrições da plataforma.
 
 ---
 
