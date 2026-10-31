@@ -1,9 +1,13 @@
 .env
 .env.*
 !.env.example
+data/
+**/data/
 *.sqlite
 *.sqlite3
 *.db
+*.db-wal
+*.db-shm
 __pycache__/
 *.py[cod]
 .venv/
