@@ -100,3 +100,13 @@ python -m unittest discover -s tests -v
 ```
 
 MIT licensed community project. Suggestions and tested contributions are welcome; see `CONTRIBUTING.md` and `SECURITY.md`.
+
+## Maestri browser and agent workspace setup
+
+After installing the app, run:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\setup-maestri-workspace.ps1 -OpenInstagram
+```
+
+This creates `MAESTRI-BOOTSTRAP.md` for configuring a **new user-owned** workspace: a research terminal, a CRM terminal and a browser portal. In Maestri, the native `maestri recruit` command is **Maestro-only** and must be issued from an authenticated Maestro session; therefore the current installer **cannot automatically create the terminals or log into Instagram**. The user signs in directly in their own portal and selects their own AI provider. Never distribute browser profiles or existing cookies. The public browser interface is not an unrestricted outbound messaging API.
