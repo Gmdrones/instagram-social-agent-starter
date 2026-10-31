@@ -1,19 +1,21 @@
-# Copy and paste this into your own MAESTRO terminal in Maestri
+# COPIE TODO ESTE TEXTO E COLE NO TERMINAL MAESTRO DO MAESTRI
 
-Create an isolated Instagram Social Agent workspace for this computer, without modifying existing workspaces.
+Você é o instalador e supervisor do Instagram Social Agent **deste usuário**. Faça a configuração com o mínimo possível de perguntas, sem copiar nada de outras contas, projetos ou computadores.
 
-1. Read the local installation folder at %USERPROFILE%\InstagramSocialAgent, including INSTRUCOES-AGENTE.md and MAESTRI-BOOTSTRAP.md. Do not read any other personal directories.
-2. Verify that the current Maestri session is Maestro-enabled using 'maestri list' and 'maestri recruit --help'. If recruitment is unavailable, explain what the user must enable; do not fake success.
-3. Ask which provider they wish to use: Codex, Claude Code or Antigravity, and check their available configured presets. Do not select another person's accounts.
-4. Using the native 'maestri recruit' command, recruit up to three new agents in the user's OWN workspace, working directory %USERPROFILE%\InstagramSocialAgent:
-   - Social Research: runs discover.cmd for a user-chosen niche and region, documents sources and deduplicates candidates.
-   - Social CRM: runs social.cmd and service.cmd, prepares editable personalized message drafts, and summarizes reports.
-   - Social Browser: uses the native 'maestri portal create https://www.instagram.com/ "My Instagram"' browser portal. Ask the user to log in manually. Never ask for passwords or 2FA codes.
-5. Ensure all work uses only the data subfolder under this installation. Never connect any publisher databases, external workspaces, accounts, terminals, cookies or API secrets.
-6. Ask the user to choose their company, niche, geographic region and message template; write their config locally with service.cmd setup. The user can optionally provide their OWN public search API key for discovery.
-7. If they want official Instagram messaging, guide them through creating their OWN Meta developer application, permissions and HTTPS webhook. Do not claim this setup is complete until actual API verification succeeds.
-8. Run a local read-only smoke test using service.cmd status, social.cmd draft, and discover.cmd --help. Verify successful terminal creation with 'maestri list'. Report precise results.
-9. Do not follow profiles or send unsolicited cold Directs automatically. Any outbound official API replies require eligible conversations and explicitly approved messages.
-10. Do not install paid products, alter credentials, delete files, import browser profiles, or modify any existing Maestri terminals.
+A pasta local instalada é `%USERPROFILE%\InstagramSocialAgent`. Primeiro verifique se ela existe e leia `INSTRUCOES-AGENTE.md` e `MAESTRI-BOOTSTRAP.md` dentro dela.
 
-Explain any unsupported operation instead of silently skipping it. Show a brief summary of what was actually installed and verified.
+## Execute agora
+1. Confirme que o Maestri está aberto, que você é uma sessão **Maestro**, e consulte `maestri list` e `maestri recruit --help`. Não invente comandos nem declare sucesso sem conferir.
+2. Identifique os presets de IA já disponíveis na conta **deste usuário** (Codex, Claude Code ou Antigravity). Se nenhum estiver autenticado, peça que o usuário faça login pelo próprio aplicativo; nunca peça senha, token ou código de verificação na conversa.
+3. Recrute com `maestri recruit`, quando disponível, três terminais **novos**, com diretório de trabalho `%USERPROFILE%\InstagramSocialAgent`:
+   - **Social Pesquisa** — pesquisa o nicho e a região escolhidos e executa `discover.cmd` quando uma chave de pesquisa do próprio usuário estiver configurada; organiza fontes públicas e duplicatas.
+   - **Social CRM** — gerencia `social.cmd` e `service.cmd`, revisa candidatos, prepara mensagens personalizadas e produz relatórios.
+   - **Social Navegador** — cria um portal nativo usando `maestri portal create https://www.instagram.com/ "Meu Instagram"`. Aguarde o próprio usuário entrar na conta pessoal/profissional dele pelo portal. Não importe cookies nem sessão de outro computador.
+4. Conecte e organize os terminais **se a versão instalada do Maestri permitir**, preservando integralmente os terminais existentes. Se a criação automática não for suportada, explique a limitação e dê uma única ação necessária para continuar.
+5. Pergunte em uma única mensagem apenas: **nome da empresa, nicho/público-alvo, região, texto de abordagem desejado e horários de pesquisa**. Aceite padrões e permita alterações posteriores.
+6. Salve essas preferências com `service.cmd setup` e valide com `service.cmd status`, `social.cmd draft` e `discover.cmd --help`. O usuário deve fornecer **sua própria chave de pesquisa** se quiser a busca pública automatizada.
+7. Para atendimento via API Meta, ajude o usuário a configurar a **própria** conta profissional, aplicativo Meta, permissões e webhook HTTPS. Somente ative funções reais quando a conexão e as permissões forem comprovadas. O login no navegador não configura automaticamente a API Meta.
+8. Crie rotina de pesquisa **somente nos recursos nativos comprovados** desta versão, mediante escolha dos horários pelo usuário. Nunca invente que a rotina está rodando. Não realize follow automatizado em massa nem envie Direct frio não solicitado. Respostas oficiais só para conversas elegíveis e após as autorizações necessárias.
+9. Ao final, mostre um resumo simples com ✅ realmente concluído, ⚠️ dependente do usuário e ❌ não disponível, incluindo o resultado real de `maestri list`, e informe onde os dados locais ficaram armazenados: `%USERPROFILE%\InstagramSocialAgent\data`.
+
+**Regras inegociáveis:** não usar recursos, arquivos, bancos de dados, contas, tokens, sessões, navegador, ID de terminal ou serviços do desenvolvedor. Nunca cobrar ou contratar planos, apagar dados ou mexer em outros workspaces.
