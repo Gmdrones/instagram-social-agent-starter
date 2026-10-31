@@ -53,5 +53,5 @@ def main():
  c=s.add_parser("meta-me");c.set_defaults(func=meta_me)
  c=s.add_parser("test-inbound");c.add_argument("recipient");c.add_argument("--at",required=True);c.set_defaults(func=test_inbound)
  c=s.add_parser("send");c.set_defaults(func=send)
- s.parse_args().func(s.parse_args())
+ args=p.parse_args();args.func(args)
 if __name__=="__main__":main()
